@@ -1,0 +1,125 @@
+version: "3.8"
+
+services:
+
+  ## MongoDB
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+
+  ## MySQL
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cricket_fantasy_app
+    ports:
+      - "3308:3306"
+
+  ## Zookeeper
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    ports:
+      - "2181:2181"
+
+  ## Kafka
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    ports:
+      - "9092:9092"
+
+  ## USER SERVICE
+  user-service:
+    build:
+      context: ./user-service
+    container_name: user-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/cricket_fantasy_app
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: root
+
+  ## PLAYER SERVICE
+  player-service:
+    build:
+      context: ./player-service
+    container_name: player-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mongodb
+    environment:
+      - spring.data.mongodb.uri=mongodb+srv://mohanprince422:Mohan%40422@vevacloudtechnology.poxc4uj.mongodb.net/Cricket-Fantasy-App?retryWrites=true&w=majority
+
+
+  ## MATCH SERVICE
+  match-service:
+    build:
+      context: ./match-service
+    container_name: match-service
+    ports:
+      - "8083:8083"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/cricket_fantasy_app
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: root
+
+  ## TEAM BUILDER SERVICE
+  team-builder-service:
+    build:
+      context: ./team-builder-service
+    container_name: team-builder-service
+    ports:
+      - "8084:8084"
+    depends_on:
+      - mongodb
+      - user-service
+      - player-service
+    environment:
+      - spring.data.mongodb.uri=mongodb+srv://mohanprince422:Mohan%40422@vevacloudtechnology.poxc4uj.mongodb.net/Cricket-Fantasy-App?retryWrites=true&w=majority
+
+
+  ## SCORE SERVICE
+  score-service:
+    build:
+      context: ./score-service
+    container_name: score-service
+    ports:
+      - "8085:8085"
+    depends_on:
+      - kafka
+    environment:
+      - spring.kafka.bootstrap-servers=kafka:9092
+
+
+  ## NOTIFICATION SERVICE
+  notification-service:
+    build:
+      context: ./notification-service
+    container_name: notification-service
+    ports:
+      - "8086:8086"
+    depends_on:
+      - kafka
+    environment:
+      - spring.kafka.bootstrap-servers=kafka:9092
+
