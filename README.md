@@ -33,4 +33,15 @@ A microservices-based Cricket Fantasy App built using:
 3. Run each service individually using:
    
       mvn spring-boot:run
+   
+🖼️ Demo Screenshots
+
+![image](https://github.com/user-attachments/assets/758b41b5-137c-403a-bd95-070465dccd74)
+![image](https://github.com/user-attachments/assets/c25a4214-5db4-49b1-b7a9-d74a3230c091)
+![image](https://github.com/user-attachments/assets/86cb1e9e-0b06-45d5-a8f7-1ace5bb40bf1)
+![image](https://github.com/user-attachments/assets/db9c0834-7a5e-41a7-b4aa-f649d3c05685)
+![image](https://github.com/user-attachments/assets/cd6fde4a-ee65-4c6a-9076-fdd531f11eb8)
+
+
+
 
