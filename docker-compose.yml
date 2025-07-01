@@ -66,7 +66,7 @@ services:
     depends_on:
       - mongodb
     environment:
-      - spring.data.mongodb.uri=mongodb+srv://mohanprince422:Mohan%40422@vevacloudtechnology.poxc4uj.mongodb.net/Cricket-Fantasy-App?retryWrites=true&w=majority
+      - spring.data.mongodb.uri=#
 
 
   ## MATCH SERVICE
@@ -95,7 +95,7 @@ services:
       - user-service
       - player-service
     environment:
-      - spring.data.mongodb.uri=mongodb+srv://mohanprince422:Mohan%40422@vevacloudtechnology.poxc4uj.mongodb.net/Cricket-Fantasy-App?retryWrites=true&w=majority
+      - spring.data.mongodb.uri=#
 
 
   ## SCORE SERVICE
