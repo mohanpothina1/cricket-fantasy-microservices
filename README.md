@@ -42,6 +42,47 @@ A microservices-based Cricket Fantasy App built using:
 ![image](https://github.com/user-attachments/assets/db9c0834-7a5e-41a7-b4aa-f649d3c05685)
 ![image](https://github.com/user-attachments/assets/cd6fde4a-ee65-4c6a-9076-fdd531f11eb8)
 
+---
+
+## 📌 API Endpoints Overview
+
+Here are some commonly used endpoints from different services to help developers quickly test and integrate:
+
+### 🔹 User Service
+| Method | Endpoint | Description |
+| ------ | -------- | ----------- |
+| POST   | `/users/register` | Register a new user |
+| POST   | `/users/login` | User login |
+| GET    | `/users/{id}` | Fetch user details |
+
+### 🔹 Match Service
+| Method | Endpoint | Description |
+| ------ | -------- | ----------- |
+| GET    | `/matches` | Retrieve all matches |
+| POST   | `/matches` | Create a new match |
+| GET    | `/matches/{id}` | Fetch match details |
+
+### 🔹 Team-Builder Service
+| Method | Endpoint | Description |
+| ------ | -------- | ----------- |
+| POST   | `/teams` | Create a fantasy team |
+| GET    | `/teams/{id}` | Get details of a team |
+
+---
+
+## 🚀 Run All Services Together with Docker
+
+Instead of starting each service individually, you can use Docker Compose to spin up all services and dependencies (MySQL, MongoDB, Kafka) in one go:
+
+```bash
+docker-compose up --build
+```
+
+To stop all services:
+```bash
+docker-compose down
+```
+
 
 
 
