@@ -8,6 +8,14 @@ A microservices-based Cricket Fantasy App built using:
 - Docker for containerization
 - JUnit & Lombok for testing and boilerplate handling
 
+  ### Prerequisites
+- Java 17+
+- Maven 3.8+
+- Docker & Docker Compose
+- Git
+- Postman (optional, for API testing)
+
+
 🧩 Microservices Overview
  --------------------------------------------------------------------------------------------------------------------
 | Service            | Tech Used       | Description                                                                 |
@@ -41,6 +49,9 @@ A microservices-based Cricket Fantasy App built using:
 ![image](https://github.com/user-attachments/assets/86cb1e9e-0b06-45d5-a8f7-1ace5bb40bf1)
 ![image](https://github.com/user-attachments/assets/db9c0834-7a5e-41a7-b4aa-f649d3c05685)
 ![image](https://github.com/user-attachments/assets/cd6fde4a-ee65-4c6a-9076-fdd531f11eb8)
+
+### Running Tests
+mvn clean test
 
 
 
