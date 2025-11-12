@@ -42,7 +42,7 @@ public class PlayerController {
         return playerService.updatePlayerPartially(id,updatedPlayer);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void deletePlayer(@PathVariable String id){
         playerService.deletePlayer(id);
     }
