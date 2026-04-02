@@ -8,6 +8,13 @@ A microservices-based Cricket Fantasy App built using:
 - Docker for containerization
 - JUnit & Lombok for testing and boilerplate handling
 
+- ## Architecture
+User → API Gateway → Microservices → Database
+                           ↓
+                         Kafka
+                           ↓
+                     Notification Service
+
 🧩 Microservices Overview
  --------------------------------------------------------------------------------------------------------------------
 | Service            | Tech Used       | Description                                                                 |
