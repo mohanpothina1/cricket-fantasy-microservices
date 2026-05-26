@@ -7,7 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class NotificationServiceApplicationTests {
 
 	@Test
-	void contextLoads() {
-	}
+void contextLoads() {
+    System.out.println("Application Started Successfully");
+}
 
 }
